@@ -1,0 +1,62 @@
+{
+  "name": "themename_theme",
+  "version": "1.0.0",
+  "description": "Tema CTCI para plataforma documental",
+  "author": "A Pie",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "WordPress",
+    "Theme"
+  ],
+  "homepage": "https://apie.cl",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "devDependencies": {
+    "@babel/register": "^7.10.5",
+    "@wordpress/scripts": "^9.0.0",
+    "autoprefixer": "^9.8.5",
+    "babel-loader": "^8.1.0",
+    "browser-sync": "^2.26.12",
+    "del": "^5.1.0",
+    "dir-archiver": "^1.1.1",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-if": "^3.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.14.0",
+    "rtlcss": "^2.5.0",
+    "stylelint-config-twbs-bootstrap": "^2.0.3",
+    "webpack-stream": "^5.2.1",
+    "yargs": "^15.4.1"
+  },
+  "rtlcssConfig": {
+    "options": {
+      "autoRename": false,
+      "autoRenameStrict": false,
+      "blacklist": {},
+      "clean": true,
+      "greedy": false,
+      "processUrls": false,
+      "stringMap": []
+    },
+    "plugins": [],
+    "map": false
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build --prod"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "pdfjs": "^2.3.9",
+    "popper": "^1.0.1"
+  }
+}
