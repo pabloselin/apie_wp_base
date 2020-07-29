@@ -12,7 +12,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
-if ( ! function_exists( 'ctci_setup' ) ) :
+if ( ! function_exists( 'mytheme_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -20,7 +20,7 @@ if ( ! function_exists( 'ctci_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function ctci_setup() {
+	function mytheme_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
@@ -75,7 +75,7 @@ if ( ! function_exists( 'ctci_setup' ) ) :
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'ctci_custom_background_args',
+				'mytheme_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -102,7 +102,7 @@ if ( ! function_exists( 'ctci_setup' ) ) :
 		);
 	}
 endif;
-add_action( 'after_setup_theme', 'ctci_setup' );
+add_action( 'after_setup_theme', 'mytheme_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -111,20 +111,20 @@ add_action( 'after_setup_theme', 'ctci_setup' );
  *
  * @global int $content_width
  */
-function ctci_content_width() {
+function mytheme_content_width() {
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'ctci_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'mytheme_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'ctci_content_width', 0 );
+add_action( 'after_setup_theme', 'mytheme_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function ctci_widgets_init() {
+function mytheme_widgets_init() {
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Sidebar', 'ctci' ),
@@ -137,19 +137,19 @@ function ctci_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'ctci_widgets_init' );
+add_action( 'widgets_init', 'mytheme_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function ctci_scripts() {
+function mytheme_scripts() {
 	wp_enqueue_style( 'ctci-style', get_template_directory_uri() . '/dist/css/style.css', array(), _S_VERSION );
 	wp_style_add_data( 'ctci-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'ctci-scripts', get_template_directory_uri() . '/dist/js/bundle.js', array(), _S_VERSION, true );
 
 }
-add_action( 'wp_enqueue_scripts', 'ctci_scripts' );
+add_action( 'wp_enqueue_scripts', 'mytheme_scripts' );
 
 /**
  * Implement the Custom Header feature.

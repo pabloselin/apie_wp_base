@@ -9,6 +9,9 @@ import autoprefixer from "autoprefixer";
 import del from "del";
 import webpack from "webpack-stream";
 import browserSync from "browser-sync";
+import replace from "gulp-replace";
+import zip from "gulp-zip";
+import info from "./package.json";
 
 const PRODUCTION = yargs.argv.prod;
 
@@ -48,6 +51,23 @@ export const styles = () => {
 		.pipe(gulpif(!PRODUCTION, sourcemaps.write()))
 		.pipe(dest("dist/css"))
 		.pipe(server.stream());
+};
+
+export const init = () => {
+	return src([
+		"**/*",
+		"!node_modules{,/**}",
+		"!bundled{,/**}",
+		"!src{,/**}",
+		"!.babelrc",
+		"!.gitignore",
+		"!gulpfile.babel.js",
+		"!package.json",
+		"!package-lock.json",
+	])
+		.pipe(replace("themename_, info.name"))
+		.pipe(zip(`${info.name}.zip`))
+		.pipe(dest("bundled"));
 };
 
 const server = browserSync.create();
