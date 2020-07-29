@@ -28,3 +28,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .site-main {
 	@extend .container;
 }
+
+header.site-header {
+	width: 100%;
+	background-color: #333;
+	color: white;
+
+	.site-branding {
+		@extend .container;
+	}
+}
